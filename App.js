@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import ImageViewer from "./components/ImageViewer";
@@ -5,6 +7,8 @@ import Button from "./components/Button";
 import * as ImagePicker from "expo-image-picker";
 
 export default function App() {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showAppOptions, setShowAppOptions] = useState(false);
   const placeholderImage = require("./assets/images/background-image.png");
 
   const pickImageAsync = async () => {
@@ -14,7 +18,8 @@ export default function App() {
     });
 
     if (!result.canceled) {
-      console.log(result);
+      setSelectedImage(result.assets[0].uri);
+      setShowAppOptions(true);
     } else {
       alert("You did not select any image.");
     }
@@ -23,7 +28,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer placeholderImageSource={placeholderImage} />
+        <ImageViewer
+          placeholderImageSource={placeholderImage}
+          selectedImage={selectedImage}
+        />
       </View>
       <View>
         <Button
@@ -31,7 +39,7 @@ export default function App() {
           theme="primary"
           onPress={pickImageAsync}
         />
-        <Button label="Use this photo" />
+        <Button label="Use this photo" onPress={setShowAppOptions(true)} />
       </View>
       <StatusBar style="auto" />
     </View>
