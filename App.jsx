@@ -8,12 +8,15 @@ import Button from "./components/Button";
 import IconButton from "./components/IconButton";
 import CircleButton from "./components/CircleButton";
 import EmojiPicker from "./components/EmojiPicker";
+import EmojiList from "./components/EmojiList";
 
 export default function App() {
+  const placeholderImage = require("./assets/images/background-image.png");
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const placeholderImage = require("./assets/images/background-image.png");
+  const [pickedEmoji, setPickedEmoji] = useState(null);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -76,10 +79,9 @@ export default function App() {
           />
         </View>
       )}
-      <EmojiPicker
-        isVisible={isModalVisible}
-        onClose={onModalClose}
-      ></EmojiPicker>
+      <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+        <EmojiList onSelect={setPickedEmoji} onClose={onModalClose} />
+      </EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
