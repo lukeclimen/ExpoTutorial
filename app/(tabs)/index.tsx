@@ -12,7 +12,7 @@ import EmojiList from "@/components/EmojiList";
 import EmojiSticker from "@/components/EmojiSticker";
 
 export default function App() {
-  const placeholderImage = require("../assets/images/background-image.png");
+  const placeholderImage = require("../../assets/images/background-image.png");
 
   const [selectedImage, setSelectedImage] = useState<string | undefined>(
     undefined
