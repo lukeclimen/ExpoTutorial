@@ -3,7 +3,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 type Props = {
   label: string;
-  theme: string;
+  theme?: string;
   onPress: () => void;
 };
 

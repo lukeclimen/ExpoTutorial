@@ -1,23 +1,25 @@
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import ImageViewer from "./components/ImageViewer";
-import Button from "./components/Button";
-import IconButton from "./components/IconButton";
-import CircleButton from "./components/CircleButton";
-import EmojiPicker from "./components/EmojiPicker";
-import EmojiList from "./components/EmojiList";
-import EmojiSticker from "./components/EmojiSticker";
+
+import ImageViewer from "@/components/ImageViewer";
+import Button from "@/components/Button";
+import IconButton from "@/components/IconButton";
+import CircleButton from "@/components/CircleButton";
+import EmojiPicker from "@/components/EmojiPicker";
+import EmojiList from "@/components/EmojiList";
+import EmojiSticker from "@/components/EmojiSticker";
 
 export default function App() {
-  const placeholderImage = require("./assets/images/background-image.png");
+  const placeholderImage = require("../assets/images/background-image.png");
 
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [showAppOptions, setShowAppOptions] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [pickedEmoji, setPickedEmoji] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    undefined
+  );
+  const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [pickedEmoji, setPickedEmoji] = useState<string | undefined>(undefined);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
