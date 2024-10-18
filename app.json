@@ -29,6 +29,15 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": ["expo-build-properties", "expo-router"]
+    "plugins": [
+      "expo-build-properties",
+      "expo-router"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d39161c3-81fb-4c4a-9564-1c9dbc0d619a"
+      }
+    },
+    "owner": "jukebox162"
   }
 }
